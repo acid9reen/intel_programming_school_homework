@@ -1,6 +1,6 @@
 from datetime import datetime as dt
 
-from get_time_namespace.get_time_package.get_time_module import get_time
+from acid9reen.get_time_package.get_time_module import get_time
 
 
 def print_time_pretty(unixtime: int) -> None:

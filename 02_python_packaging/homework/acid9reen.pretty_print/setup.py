@@ -7,7 +7,7 @@ setup(
     author="Ruslan Smirnov",
     author_email="smirnov_ruslan@outlook.com",
     packages=[
-        "pretty_print_namespace.pretty_print_package",
+        "acid9reen.pretty_print_package",
     ],
     install_requires=[
         "requests==2.26.0",
@@ -15,13 +15,10 @@ setup(
     entry_points={
         "console_scripts": [
             "get_time_pp="
-            "pretty_print_namespace"
+            "acid9reen"
             ".pretty_print_package"
             ".pretty_print_module:main",
-            "get_time="
-            "pretty_print_namespace"
-            ".pretty_print_package"
-            ".pretty_print_module:main",
+            "get_time=acid9reen.pretty_print_package.pretty_print_module:main",
         ]
     },
 )

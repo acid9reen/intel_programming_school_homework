@@ -7,18 +7,15 @@ setup(
     author="Ruslan Smirnov",
     author_email="smirnov_ruslan@outlook.com",
     packages=[
-        "get_time_namespace.get_time_package",
+        "acid9reen.get_time_package",
     ],
     install_requires=[
         "requests==2.26.0",
     ],
     entry_points={
         "console_scripts": [
-            "get_time_raw="
-            "get_time_namespace"
-            ".get_time_package"
-            ".get_time_module:main",
-            "get_time=get_time_namespace.get_time_package.get_time_module:main",
+            "get_time_raw=acid9reen.get_time_package.get_time_module:main",
+            "get_time=acid9reen.get_time_package.get_time_module:main",
         ]
     },
 )
