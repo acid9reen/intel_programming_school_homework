@@ -6,7 +6,6 @@ setup(
     description="Show current time",
     author="Ruslan Smirnov",
     author_email="smirnov_ruslan@outlook.com",
-    namespace_packages=["pretty_print_namespace"],
     packages=[
         "pretty_print_namespace.pretty_print_package",
     ],

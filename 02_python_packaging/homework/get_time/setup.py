@@ -6,7 +6,6 @@ setup(
     description="Show current time",
     author="Ruslan Smirnov",
     author_email="smirnov_ruslan@outlook.com",
-    namespace_packages=["get_time_namespace"],
     packages=[
         "get_time_namespace.get_time_package",
     ],
