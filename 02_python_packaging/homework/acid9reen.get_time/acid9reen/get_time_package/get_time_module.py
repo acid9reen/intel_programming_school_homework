@@ -1,5 +1,11 @@
 import requests
 
+try:
+    from acid9reen.pretty_print_package.pretty_print_module import \
+        unix_to_pretty as utp
+except ImportError:
+    utp = None
+
 
 def get_time() -> int:
     url = "http://worldtimeapi.org/api/timezone/Europe/Moscow"
@@ -9,13 +15,10 @@ def get_time() -> int:
     return unixtime
 
 
-def print_time(unixtime: int) -> None:
-    print(unixtime)
-
-
 def main() -> int:
     unixtime = get_time()
-    print(unixtime)
+    time_to_print = utp(unixtime) if utp else unixtime
+    print(time_to_print)
 
     return 0
 
