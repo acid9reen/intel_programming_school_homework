@@ -14,7 +14,6 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "get_time_raw=acid9reen.get_time_package.get_time_module:main",
             "get_time=acid9reen.get_time_package.get_time_module:main",
         ]
     },

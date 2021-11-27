@@ -14,11 +14,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "get_time_pp="
-            "acid9reen"
-            ".pretty_print_package"
-            ".pretty_print_module:main",
-            "get_time=acid9reen.pretty_print_package.pretty_print_module:main",
+            "get_time_pp=acid9reen.pretty_print_package.__main__:main",
         ]
     },
 )
