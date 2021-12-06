@@ -1,6 +1,8 @@
 import selectors
 import socket
 
+from utils import ExperimentStage, fib
+
 selector = selectors.DefaultSelector()
 
 
@@ -19,7 +21,7 @@ def server() -> None:
 to_monitor = []
 
 
-def accept_connection(server_sock: socket.socket) -> None:
+def accept_connection(server_sock: socket.socket, stage: ExperimentStage) -> None:
     client_socket, client_addr = server_sock.accept()
     print(f"Connection has been received from {client_addr[0]}:{client_addr[1]}")
     selector.register(
@@ -27,30 +29,35 @@ def accept_connection(server_sock: socket.socket) -> None:
     )
 
 
-def send_message(client_sock: socket.socket) -> None:
+def send_message(client_sock: socket.socket, stage: ExperimentStage) -> None:
     request = client_sock.recv(4096)
     print(f"Received: {request.decode()}")
 
-    try:
-        request = int(request)
-    except ValueError:
-        if request:
-            print("Sending Ping to client...")
-            client_sock.send("Pong".encode())
-        else:
-            print("Client has gone. Closing client socket...")
-            selector.unregister(client_sock)
-            client_sock.close()
+    if request:
+        print("Sending Ping to client...")
+
+        if stage == ExperimentStage.CPU_BOUND:
+            __ = fib()
+
+        client_sock.send("Pong".encode())
+    else:
+        print("Client has gone. Closing client socket...")
+        selector.unregister(client_sock)
+        client_sock.close()
 
 
-def event_loop():
+def event_loop(stage: ExperimentStage):
     while True:
         events = selector.select()
         for key, __ in events:
             callback_function = key.data
-            callback_function(key.fileobj)
+            callback_function(key.fileobj, stage)
+
+
+def run_selectors_server(stage: ExperimentStage):
+    server()
+    event_loop(stage)
 
 
 if __name__ == "__main__":
-    server()
-    event_loop()
+    run_selectors_server(ExperimentStage.CPU_BOUND)
