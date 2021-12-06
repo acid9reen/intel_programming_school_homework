@@ -5,7 +5,7 @@ simple request-response (echo server) and CPU bound operation
 
 || Request-response | CPU bound |
 | :--- |:---:|:---:|
-| Socket server | 0.043 | 1994.731 |
-| Selector server | 0.047 | 1982.96 |
-| Selectors server | 0.073 | 1978.619 |
-| Flask server | 2.753 | 1999.353 |
+| Socket server | 23255.81 | 0.5013 |
+| Selector server | 21276.59 | 0.5042 |
+| Selectors server | 13698.63 | 0.5054 |
+| Flask server | 363.24 | 0.5001 |
